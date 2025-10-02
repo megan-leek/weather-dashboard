@@ -1,0 +1,2 @@
+C:\Users\swlee\OneDrive\Documents\Megan\weather-dashboard\.venv\Scripts\python.exe @ 2025-10-02 14:55:22.050626
+C:\Users\swlee\OneDrive\Documents\Megan\weather-dashboard\.venv\Scripts\python.exe @ 2025-10-02 14:57:45.509429
