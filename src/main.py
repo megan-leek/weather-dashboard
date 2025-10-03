@@ -9,7 +9,10 @@ from dotenv import load_dotenv
 crags = pd.read_csv("data/crags.csv").to_dict(orient="records")
 load_dotenv()
 api_key = os.getenv("OWM_API_KEY")
-print(f"🔑 API Key loaded: {api_key}")
+
+if not api_key:
+    raise ValueError("❌ OWM_API_KEY not found. Check your .env file or GitHub Secrets.")
+# print(f"🔑 API Key loaded: {api_key}")
  # Replace with your actual OpenWeatherMap key
 
 def log_weather():
