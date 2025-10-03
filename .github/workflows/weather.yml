@@ -28,9 +28,12 @@ jobs:
       - name: Run weather logger
         run: python src/main.py
 
-      - name: Commit rain log if changed
+            - name: Push rain log
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name "megan-leek"
-          git config --global user.email "meganlouiseleek@gmail.com"
+          git config --global user.email "megan-leek@users.noreply.github.com"
+          git remote set-url origin https://megan-leek:${GH_TOKEN}@github.com/megan-leek/weather-dashboard.git
           git add data/rain_log.csv
           git diff --cached --quiet || (git commit -m "Update rain log [auto]" && git push)
