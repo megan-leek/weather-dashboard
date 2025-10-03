@@ -28,7 +28,7 @@ jobs:
       - name: Run weather logger
         run: python src/main.py
 
-            - name: Push rain log
+      - name: Push rain log
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
