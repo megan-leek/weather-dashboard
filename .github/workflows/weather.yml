@@ -27,3 +27,10 @@ jobs:
 
       - name: Run weather logger
         run: python src/main.py
+
+      - name: Commit rain log if changed
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data/rain_log.csv
+          git diff --cached --quiet || (git commit -m "Update rain log [auto]" && git push)
