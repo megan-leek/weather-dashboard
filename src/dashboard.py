@@ -4,8 +4,11 @@ import folium
 from streamlit_folium import st_folium
 from datetime import datetime
 
-# Load rain log
-df = pd.read_csv("data/rain_log.csv")
+headers = ["timestamp", "crag", "lat", "lon", "rain_mm", "notes"]
+
+# Load rain log and crags data
+df = pd.read_csv("data/rain_log.csv", names=headers, header=None)
+
 
 # Parse timestamp
 df["timestamp"] = pd.to_datetime(df["timestamp"])
@@ -37,11 +40,7 @@ folium.Marker([latest["lat"], latest["lon"]], popup=selected_crag).add_to(m)
 st_folium(m, width=700)
 
 st.set_page_config(page_title="Crag Rain Dashboard", layout="wide")
-st.title("🧗 Crag Rain Dashboard")
 
-try:
-    df = pd.read_csv("data/rain_log.csv")
-except FileNotFoundError:
-    st.warning("No rain log found. Please run the logger first.")
-    st.stop()
+
+
     
